@@ -4,24 +4,25 @@ const express = require("express")
 const app = express()
 
 app.set('view engine', 'ejs');
+ 
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/', function(req, res) {
     var today = new Date();
-    var currDay = today.getDay();
-    var day = "";
 
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    var options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+    }
 
-    // if (currDay == 6 || currDay == 0) {
-    //     day = "weekend";
-    // }
-    // else {
-    //     day = "weekday"
-    // }
-
-    day = days[currDay];
+    var day = today.toLocaleDateString("en-US", options)
 
     res.render('list', {kindOfDay: day});
+})
+
+app.post('/', function(req, res) {
+    console.log(req.body.newItem)
 })
 
 app.listen(3000, function() {
