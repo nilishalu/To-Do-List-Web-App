@@ -12,6 +12,10 @@
     <li>Finish WOC responsive web</li>
     <li>Finish IC Campus connect work</li>
     <li>Complete IRIS Product task work</li>
+
+    <% for (let i = 0; i < newItems.length; i++) { %>
+        <li><%= newItems[i] %></li>
+    <% } %>
    </ul>
    <form action="/" method="post">
     <input type="text" name="newItem">
