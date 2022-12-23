@@ -6,8 +6,12 @@ const app = express()
 app.set('view engine', 'ejs');
  
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static("public"))
 
-var items = []
+var items = ["Finish WOC responsive web",
+"Finish IC Campus connect work",
+"Complete IRIS Product task work"
+]
 
 app.get('/', function(req, res) {
     var today = new Date();
